@@ -9,12 +9,13 @@ img {
 .slide {
     max-width: 380px;
     margin: 20px auto;
-
     display: grid;
 }
 
 .slide-items {
     position: relative;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .slide-items, .slide-nav {
@@ -55,11 +56,25 @@ img {
 .slide-thumb span{
     flex: 1;
     height: 3px;
-    background: red;
+    background: rgba(0,0,0,.4);
     margin: 5px;
     border-radius: 5px;
     display: block;
+    overflow: hidden;
 }
-.slide-thumb span.active{
-    background: blue;
+
+.slide-thumb span.active::after {
+    content: "";
+    height: inherit;
+    display: block;
+    background: rgba(255,255,255,.8);
+    transform: translateX(-100%);
+    border-radius: 5px;
+    animation: anima 5s linear forwards;
+}
+
+@keyframes anima {
+    to {
+        transform: initial
+    }
 }
